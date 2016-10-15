@@ -15,6 +15,7 @@
 		7CC651181DB2A54E00A5658E /* OnTheMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651171DB2A54E00A5658E /* OnTheMapTests.swift */; };
 		7CC651231DB2A54E00A5658E /* OnTheMapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651221DB2A54E00A5658E /* OnTheMapUITests.swift */; };
 		7CC651341DB2A5F700A5658E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651331DB2A5F700A5658E /* LoginViewController.swift */; };
+		7CC651361DB2CB5400A5658E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651351DB2CB5400A5658E /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7CC651221DB2A54E00A5658E /* OnTheMapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapUITests.swift; sourceTree = "<group>"; };
 		7CC651241DB2A54E00A5658E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CC651331DB2A5F700A5658E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7CC651351DB2CB5400A5658E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				7CC651331DB2A5F700A5658E /* LoginViewController.swift */,
+				7CC651351DB2CB5400A5658E /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				7CC651341DB2A5F700A5658E /* LoginViewController.swift in Sources */,
 				7CC651051DB2A54D00A5658E /* ViewController.swift in Sources */,
 				7CC651031DB2A54D00A5658E /* AppDelegate.swift in Sources */,
+				7CC651361DB2CB5400A5658E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

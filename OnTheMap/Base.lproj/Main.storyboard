@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,15 +28,15 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-tP-Gey">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-tP-Gey">
                                         <color key="backgroundColor" red="0.94514888740000003" green="0.81573635330000005" blue="0.55622183680000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.36506269043018436" blue="0.031168663271201824" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-97-ugz">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-97-ugz">
                                         <color key="backgroundColor" red="0.94514888740000003" green="0.8157363533001708" blue="0.5562218368230416" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="0.36506269043018436" blue="0.031168663271201824" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -77,6 +78,8 @@
                                     <constraint firstItem="a0T-JP-F2y" firstAttribute="leading" secondItem="Qs5-cL-Jg1" secondAttribute="leading" constant="20" id="1FV-kR-UO1"/>
                                     <constraint firstItem="zIN-lB-7pq" firstAttribute="top" secondItem="YPf-97-ugz" secondAttribute="bottom" constant="15" id="2fy-Pb-nC3"/>
                                     <constraint firstAttribute="trailing" secondItem="2Zl-tP-Gey" secondAttribute="trailing" constant="20" id="7vs-yI-pN1"/>
+                                    <constraint firstItem="8Py-Wh-QqH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zn5-64-vPK" secondAttribute="bottom" constant="15" id="EGN-Gm-knL"/>
+                                    <constraint firstItem="zh0-bP-G8s" firstAttribute="top" relation="greaterThanOrEqual" secondItem="a0T-JP-F2y" secondAttribute="bottom" constant="15" id="Gry-tG-LBU"/>
                                     <constraint firstItem="YPf-97-ugz" firstAttribute="leading" secondItem="Qs5-cL-Jg1" secondAttribute="leading" constant="20" id="HKm-zC-o8v"/>
                                     <constraint firstItem="2Zl-tP-Gey" firstAttribute="top" secondItem="zh0-bP-G8s" secondAttribute="bottom" constant="15" id="OaW-el-l7r"/>
                                     <constraint firstItem="zIN-lB-7pq" firstAttribute="leading" secondItem="Qs5-cL-Jg1" secondAttribute="leading" constant="20" id="PAp-L5-2bJ"/>
@@ -92,7 +95,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94514888743455494" green="0.55187339980832983" blue="0.15541111078695538" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Qs5-cL-Jg1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="H7G-4U-DC5"/>
+                            <constraint firstItem="Qs5-cL-Jg1" firstAttribute="topMargin" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="H7G-4U-DC5"/>
                             <constraint firstItem="Qs5-cL-Jg1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uk8-4R-ysr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Qs5-cL-Jg1" secondAttribute="bottom" id="b7q-RL-Y7e"/>
                             <constraint firstAttribute="trailing" secondItem="Qs5-cL-Jg1" secondAttribute="trailing" id="f9t-CQ-VNd"/>
@@ -118,6 +121,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="W9F-fN-dYR">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Xh4-bz-hah" kind="relationship" relationship="rootViewController" id="k8S-ay-S6Y"/>
                     </connections>
@@ -126,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="884" y="124"/>
         </scene>
-        <!--Item 2-->
+        <!--List-->
         <scene sceneID="DjR-ir-QHa">
             <objects>
                 <viewController id="7Nv-XE-OJb" sceneMemberID="viewController">
@@ -151,16 +158,16 @@
                             <constraint firstAttribute="trailingMargin" secondItem="j4e-BO-N9C" secondAttribute="trailing" constant="10" id="pIQ-ey-ios"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="z57-jX-l0g"/>
+                    <tabBarItem key="tabBarItem" title="List" id="z57-jX-l0g"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnB-8Z-Pkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="450.22488755622192"/>
         </scene>
-        <!--Item 1-->
+        <!--Map-->
         <scene sceneID="4uH-te-jQP">
             <objects>
-                <viewController id="D0F-ez-mso" sceneMemberID="viewController">
+                <viewController id="D0F-ez-mso" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7rC-ga-sYc"/>
                         <viewControllerLayoutGuide type="bottom" id="fVR-Pb-gRV"/>
@@ -168,19 +175,34 @@
                     <view key="view" contentMode="scaleToFill" id="u5l-3i-ZM8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="z9E-d4-Y4l"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fVR-Pb-gRV" firstAttribute="top" secondItem="z9E-d4-Y4l" secondAttribute="bottom" id="5hp-sv-hd5"/>
+                            <constraint firstItem="z9E-d4-Y4l" firstAttribute="top" secondItem="7rC-ga-sYc" secondAttribute="bottom" id="EJl-5w-oFx"/>
+                            <constraint firstItem="z9E-d4-Y4l" firstAttribute="leading" secondItem="u5l-3i-ZM8" secondAttribute="leading" id="nVq-FC-twj"/>
+                            <constraint firstAttribute="trailing" secondItem="z9E-d4-Y4l" secondAttribute="trailing" id="tIe-ET-MmT"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="duN-f1-agI"/>
+                    <tabBarItem key="tabBarItem" title="Map" id="duN-f1-agI"/>
+                    <connections>
+                        <outlet property="mapView" destination="z9E-d4-Y4l" id="UkO-WV-bVH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpS-13-U7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2636" y="-205"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--NavigationBarName-->
         <scene sceneID="t8m-pZ-6U0">
             <objects>
                 <tabBarController id="Xh4-bz-hah" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ctw-1T-wrg"/>
+                    <navigationItem key="navigationItem" title="NavigationBarName" id="ctw-1T-wrg">
+                        <barButtonItem key="leftBarButtonItem" tag="1" title="Add Pin" id="8Ia-tk-j2O" userLabel="Add Pin"/>
+                        <barButtonItem key="rightBarButtonItem" tag="2" title="Refresh" id="Gld-Hq-nTt" userLabel="Refresh"/>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="czq-DP-lLP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
