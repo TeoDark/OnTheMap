@@ -18,19 +18,14 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let testLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-        centerMapOnLocation(location: testLocation)
-        print(navigationController?.navigationBar.subviews.count)
-        print(navigationController?.navigationBar.subviews[0])
-        print(navigationController?.navigationBar.subviews[1])
-        print(navigationController?.navigationBar.subviews[2])
-        print(navigationController?.navigationBar.subviews[3])
-        print(navigationController?.navigationBar.subviews[4])
-        
-        //addPinButton=navigationController!.navigationBar.subviews[2]
-        print("czy ma?")
-        print(navigationController?.navigationBar.subviews.contains(where: {$0.tag==2}))
-        
+        //centerMapOnLocation(location: testLocation)
 
+        //Buttons:
+        let naviButtons=navigationController?.navigationBar.subviews.filter({(($0 as? UIButton) != nil)}) as! [UIButton]
+        let leftButton = naviButtons.first(where: {$0.currentTitle=="Add Pin"})
+        let rightButton = naviButtons.first(where: {$0.currentTitle=="Refresh"})
+        leftButton?.addTarget(self, action: #selector(tappingAddPinButton), for: .touchUpInside)
+        rightButton?.addTarget(self, action: #selector(tappingRefreshButton), for: .touchUpInside)
     }
     
     
@@ -46,9 +41,27 @@ class MapViewController: UIViewController {
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    @IBAction func tappingAddPin(_ sender: UIBarButtonItem) {
+    @IBAction func tappingAddPinButton(_ sender: UIButton) {
         print("Dzialam!")
-        let alert = UIAlertController(title: "Pin allready egsist!", message: "override existing pin?", preferredStyle: UIAlertControllerStyle.alert)
-        show(alert, sender: nil)
+        //let alert = UIAlertController(title: "Pin allready egsist!", message: "override existing pin?", preferredStyle: UIAlertControllerStyle.alert)
+        //navigationController?.pushViewController(alert, animated: true)
+        //show(alert, sender: nil)
+        
+        //solution from: http://nshipster.com/uialertcontroller/
+        let alertController = UIAlertController(title: nil, message: "You Have Already Posted a Student Location. Would You Like to Overwrite Your Current Location?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let overwriteAction = UIAlertAction(title: "Overwrite!", style: .destructive) { (action) in print(action) }
+        alertController.addAction(overwriteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true) {
+            // ...
+        }
+        
     }
+    
+    @IBAction func tappingRefreshButton(sender: UIButton){
+        print("I acting like refreshing but rly not!")
+    }
+    
 }
