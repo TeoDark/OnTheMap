@@ -19,19 +19,18 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let testLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         //centerMapOnLocation(location: testLocation)
-
-        //Buttons:
+        print(navigationController?.prefersStatusBarHidden)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        print(navigationController?.prefersStatusBarHidden)
+        //Buttons - this code sime like bad practice, plz rate it:
+        /*
         let naviButtons=navigationController?.navigationBar.subviews.filter({(($0 as? UIButton) != nil)}) as! [UIButton]
         let leftButton = naviButtons.first(where: {$0.currentTitle=="Add Pin"})
         let rightButton = naviButtons.first(where: {$0.currentTitle=="Refresh"})
+        let logOutButton = naviButtons.first(where: {$0.currentTitle=="Refresh"})
         leftButton?.addTarget(self, action: #selector(tappingAddPinButton), for: .touchUpInside)
         rightButton?.addTarget(self, action: #selector(tappingRefreshButton), for: .touchUpInside)
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+         */
     }
     
     //function from: https://www.raywenderlich.com/90971/introduction-mapkit-swift-tutorial
@@ -64,4 +63,19 @@ class MapViewController: UIViewController {
         print("I acting like refreshing but rly not!")
     }
     
+    /*
+     Additional notes:
+     Recomended Tab Icon Sizes (from: http://stackoverflow.com/questions/18068597/what-size-should-tabbar-images-be ):
+     @1x : about 25 x 25 (max: 48 x 32)
+     @2x : about 50 x 50 (max: 96 x 64)
+     @3x : about 75 x 75 (max: 144 x 96)
+     Aplication Tab Images:
+     List - https://www.iconfinder.com/icons/536275/bullet_format_list_text_icon#size=24
+     Map - https://www.iconfinder.com/icons/175440/map_marker_icon#size=64
+     Navigation Bar Icons Sizes (from: http://stackoverflow.com/questions/22607674/ios-navigation-bar-item-image-size):
+     @1: 22 x 22
+     @2: 44 x 44
+     @3: 66 x 66
+     Pin - https://www.iconfinder.com/icons/763236/gps_location_map_marker_pin_icon#size=64
+     */
 }
