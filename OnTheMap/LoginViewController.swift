@@ -26,4 +26,8 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func tappingSingUpButton(_ sender: UIButton) {
+        print("Sing Up tapped!")
+        openIfPosibleLinkInBrawser(notSafeURL: "https://www.udacity.com/account/auth#!/signup")
+    }
 }

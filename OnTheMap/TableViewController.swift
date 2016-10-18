@@ -7,18 +7,45 @@
 //
 import UIKit
 
-class TableViewController: UIViewController {
-
+class TableViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    var tabController: TabBarController?
+    var fakeUrl:[String]=["https://developer.apple.com/reference/appkit/nsworkspace#relationships",
+                          "https://discussions.udacity.com/t/problem-with-submit-link/188544",
+                          "http://kwejk.pl/obrazek/2792607/czymam-sie.html",
+                          "https://www.bitmarket.pl/market.php?market=BTCPLN"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.contentInset = .zero
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        var tabController: TabBarController?
+        
         tabController=navigationController?.viewControllers.first(where: {$0 is TabBarController}) as? TabBarController
         print("jestm w liscie i: \(tabController)")
         tabController?.setNavigationBarTitle(title: "Student List")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return fakeUrl.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell=UITableViewCell(style: .default, reuseIdentifier: "StudentList")
+        cell.textLabel?.text=fakeUrl[indexPath.row]
+        cell.imageView?.image=UIImage(imageLiteralResourceName: "PinIcon")
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        print("test")
+        openIfPosibleLinkInBrawser(notSafeURL:fakeUrl[indexPath.row])
     }
 
 }

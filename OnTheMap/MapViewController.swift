@@ -11,12 +11,13 @@ import MapKit
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-
+    var tabController: TabBarController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let testLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        //let testLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         //centerMapOnLocation(location: testLocation)
         
         //navigationController?.navigationBar
@@ -24,7 +25,7 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        var tabController: TabBarController?
+
         tabController=navigationController?.viewControllers.first(where: {$0 is TabBarController}) as? TabBarController
         print("jestm w mapie i: \(tabController)")
         tabController?.setNavigationBarTitle(title: "Map")

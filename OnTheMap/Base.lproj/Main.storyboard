@@ -72,6 +72,9 @@
                                                                 <state key="normal" title="Sign Up">
                                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="tappingSingUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FyS-2t-4ZG"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -134,7 +137,7 @@
         <scene sceneID="qXK-Mt-VHW">
             <objects>
                 <navigationController id="CXe-kU-Li6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uqW-Qg-gp5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uqW-Qg-gp5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -153,7 +156,7 @@
         <!--List-->
         <scene sceneID="DjR-ir-QHa">
             <objects>
-                <viewController id="7Nv-XE-OJb" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7Nv-XE-OJb" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7UD-Px-RIl"/>
                         <viewControllerLayoutGuide type="bottom" id="om3-JD-LRe"/>
@@ -162,28 +165,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View 2!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4e-BO-N9C">
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0s-9B-fK9">
-                                <frame key="frameInset" minX="155" minY="142" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-XP-5Fq">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StudentList" textLabel="05r-m5-MN4" style="IBUITableViewCellStyleDefault" id="Z0F-8W-giV">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z0F-8W-giV" id="vIB-sf-v1s">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="05r-m5-MN4">
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="Nrc-gb-mV0" kind="presentation" id="Hw4-s8-8xz"/>
+                                    <outlet property="dataSource" destination="7Nv-XE-OJb" id="a0R-wj-Uo3"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="j4e-BO-N9C" firstAttribute="leading" secondItem="vLr-99-xl8" secondAttribute="leadingMargin" constant="10" id="EO8-Mm-F2t"/>
-                            <constraint firstItem="j4e-BO-N9C" firstAttribute="top" secondItem="7UD-Px-RIl" secondAttribute="bottom" constant="10" id="Nl7-8R-MPK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="j4e-BO-N9C" secondAttribute="trailing" constant="10" id="pIQ-ey-ios"/>
+                            <constraint firstItem="om3-JD-LRe" firstAttribute="top" secondItem="w4z-XP-5Fq" secondAttribute="bottom" id="JdA-YO-JhS"/>
+                            <constraint firstItem="w4z-XP-5Fq" firstAttribute="leading" secondItem="vLr-99-xl8" secondAttribute="leading" id="VWZ-zp-ko4"/>
+                            <constraint firstItem="w4z-XP-5Fq" firstAttribute="top" secondItem="7UD-Px-RIl" secondAttribute="bottom" id="ZAB-uW-NOn"/>
+                            <constraint firstAttribute="trailing" secondItem="w4z-XP-5Fq" secondAttribute="trailing" id="lg0-v0-RIf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="z57-jX-l0g"/>
+                    <connections>
+                        <outlet property="tableView" destination="w4z-XP-5Fq" id="K0c-0E-6Q3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LnB-8Z-Pkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
