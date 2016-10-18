@@ -134,7 +134,7 @@
         <scene sceneID="qXK-Mt-VHW">
             <objects>
                 <navigationController id="CXe-kU-Li6" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" misplaced="YES" id="uqW-Qg-gp5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="uqW-Qg-gp5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -153,7 +153,7 @@
         <!--List-->
         <scene sceneID="DjR-ir-QHa">
             <objects>
-                <viewController id="7Nv-XE-OJb" sceneMemberID="viewController">
+                <viewController id="7Nv-XE-OJb" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7UD-Px-RIl"/>
                         <viewControllerLayoutGuide type="bottom" id="om3-JD-LRe"/>
@@ -175,26 +175,12 @@
                                     <segue destination="Nrc-gb-mV0" kind="presentation" id="Hw4-s8-8xz"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btv-Ee-F7y">
-                                <items>
-                                    <navigationItem title="Students List" id="2u0-Gh-3Kz">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ucc-gm-sys"/>
-                                        <rightBarButtonItems>
-                                            <barButtonItem image="PinIcon" id="CeA-lU-LBe"/>
-                                            <barButtonItem systemItem="refresh" id="EXJ-UM-kmx"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="j4e-BO-N9C" firstAttribute="leading" secondItem="vLr-99-xl8" secondAttribute="leadingMargin" constant="10" id="EO8-Mm-F2t"/>
-                            <constraint firstAttribute="trailing" secondItem="btv-Ee-F7y" secondAttribute="trailing" id="Hf5-n1-a8K"/>
                             <constraint firstItem="j4e-BO-N9C" firstAttribute="top" secondItem="7UD-Px-RIl" secondAttribute="bottom" constant="10" id="Nl7-8R-MPK"/>
-                            <constraint firstItem="btv-Ee-F7y" firstAttribute="leading" secondItem="vLr-99-xl8" secondAttribute="leading" id="i21-MY-Hro"/>
                             <constraint firstAttribute="trailingMargin" secondItem="j4e-BO-N9C" secondAttribute="trailing" constant="10" id="pIQ-ey-ios"/>
-                            <constraint firstItem="btv-Ee-F7y" firstAttribute="top" secondItem="vLr-99-xl8" secondAttribute="top" constant="20" id="vra-vx-Mjs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="z57-jX-l0g"/>
@@ -216,25 +202,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="z9E-d4-Y4l"/>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVC-F0-l1U">
-                                <items>
-                                    <navigationItem title="Map" id="giW-wZ-KVu">
-                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="BPf-Wm-pBS"/>
-                                        <rightBarButtonItems>
-                                            <barButtonItem image="PinIcon" id="o4h-Rv-bnU"/>
-                                            <barButtonItem systemItem="refresh" id="tWq-7t-oma"/>
-                                        </rightBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fVR-Pb-gRV" firstAttribute="top" secondItem="z9E-d4-Y4l" secondAttribute="bottom" id="5hp-sv-hd5"/>
                             <constraint firstItem="z9E-d4-Y4l" firstAttribute="top" secondItem="7rC-ga-sYc" secondAttribute="bottom" id="EJl-5w-oFx"/>
-                            <constraint firstItem="vVC-F0-l1U" firstAttribute="top" secondItem="u5l-3i-ZM8" secondAttribute="top" constant="20" id="M2y-d1-ZlF"/>
-                            <constraint firstAttribute="trailing" secondItem="vVC-F0-l1U" secondAttribute="trailing" id="TJC-ag-Ob0"/>
-                            <constraint firstItem="vVC-F0-l1U" firstAttribute="leading" secondItem="u5l-3i-ZM8" secondAttribute="leading" id="YUO-ZX-z8m"/>
                             <constraint firstItem="z9E-d4-Y4l" firstAttribute="leading" secondItem="u5l-3i-ZM8" secondAttribute="leading" id="nVq-FC-twj"/>
                             <constraint firstAttribute="trailing" secondItem="z9E-d4-Y4l" secondAttribute="trailing" id="tIe-ET-MmT"/>
                         </constraints>
@@ -422,14 +394,36 @@ today?</string>
         <!--Tab Bar Controller-->
         <scene sceneID="t8m-pZ-6U0">
             <objects>
-                <tabBarController id="Xh4-bz-hah" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ctw-1T-wrg"/>
+                <tabBarController id="Xh4-bz-hah" customClass="TabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ctw-1T-wrg">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Foe-OF-GNn">
+                            <connections>
+                                <action selector="tappingLogoutButton:" destination="Xh4-bz-hah" id="zzU-4e-SJ9"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="PinIcon" id="ibW-fA-I32">
+                                <connections>
+                                    <action selector="tappingAddPinButton:" destination="Xh4-bz-hah" id="7AA-yN-FjJ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="dC4-ls-ERn">
+                                <connections>
+                                    <action selector="tappingRefreshButton:" destination="Xh4-bz-hah" id="Sgl-Zu-KDT"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="czq-DP-lLP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="logoutButton" destination="Foe-OF-GNn" id="FYm-Vn-M0F"/>
+                        <outlet property="navigationBar" destination="ctw-1T-wrg" id="uNE-fg-aU8"/>
+                        <outlet property="pinButton" destination="ibW-fA-I32" id="0sv-mk-muh"/>
+                        <outlet property="refreshButton" destination="dC4-ls-ERn" id="V8L-RU-8ie"/>
                         <segue destination="D0F-ez-mso" kind="relationship" relationship="viewControllers" id="CAS-jt-Shu"/>
                         <segue destination="7Nv-XE-OJb" kind="relationship" relationship="viewControllers" id="ggn-Yx-W4m"/>
                     </connections>

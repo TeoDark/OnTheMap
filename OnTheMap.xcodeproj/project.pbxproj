@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C10D8CD1DB592BE0086DB9B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C10D8CC1DB592BE0086DB9B /* TableViewController.swift */; };
+		7C10D8CF1DB594450086DB9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C10D8CE1DB594450086DB9B /* TabBarController.swift */; };
 		7CC651031DB2A54D00A5658E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651021DB2A54D00A5658E /* AppDelegate.swift */; };
 		7CC651051DB2A54D00A5658E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651041DB2A54D00A5658E /* ViewController.swift */; };
 		7CC651081DB2A54E00A5658E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CC651061DB2A54E00A5658E /* Main.storyboard */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C10D8CC1DB592BE0086DB9B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		7C10D8CE1DB594450086DB9B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7CC650FF1DB2A54D00A5658E /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CC651021DB2A54D00A5658E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CC651041DB2A54D00A5658E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 			children = (
 				7CC651331DB2A5F700A5658E /* LoginViewController.swift */,
 				7CC651351DB2CB5400A5658E /* MapViewController.swift */,
+				7C10D8CC1DB592BE0086DB9B /* TableViewController.swift */,
+				7C10D8CE1DB594450086DB9B /* TabBarController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -295,6 +301,8 @@
 				7CC651341DB2A5F700A5658E /* LoginViewController.swift in Sources */,
 				7CC651051DB2A54D00A5658E /* ViewController.swift in Sources */,
 				7CC651031DB2A54D00A5658E /* AppDelegate.swift in Sources */,
+				7C10D8CF1DB594450086DB9B /* TabBarController.swift in Sources */,
+				7C10D8CD1DB592BE0086DB9B /* TableViewController.swift in Sources */,
 				7CC651361DB2CB5400A5658E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +552,7 @@
 				7CC651291DB2A54E00A5658E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CC6512A1DB2A54E00A5658E /* Build configuration list for PBXNativeTarget "OnTheMapTests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +561,7 @@
 				7CC6512C1DB2A54E00A5658E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CC6512D1DB2A54E00A5658E /* Build configuration list for PBXNativeTarget "OnTheMapUITests" */ = {
 			isa = XCConfigurationList;
@@ -560,6 +570,7 @@
 				7CC6512F1DB2A54E00A5658E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
