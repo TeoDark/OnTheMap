@@ -30,4 +30,6 @@ class LoginViewController: UIViewController {
         print("Sing Up tapped!")
         openIfPosibleLinkInBrawser(notSafeURL: "https://www.udacity.com/account/auth#!/signup")
     }
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    }
 }

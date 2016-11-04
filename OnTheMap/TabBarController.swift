@@ -24,7 +24,12 @@ class TabBarController: UITabBarController {
         //solution from: http://nshipster.com/uialertcontroller/
         let alertController = UIAlertController(title: nil, message: "You Have Already Posted a Student Location. Would You Like to Overwrite Your Current Location?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let overwriteAction = UIAlertAction(title: "Overwrite!", style: .destructive) { (action) in print(action) }
+        let overwriteAction = UIAlertAction(title: "Overwrite!", style: .destructive)
+        {
+            (action) in
+            self.presentFindLocation()
+        }
+
         alertController.addAction(overwriteAction)
         alertController.addAction(cancelAction)
         
@@ -38,10 +43,18 @@ class TabBarController: UITabBarController {
     }
     
     @IBAction func tappingLogoutButton(_ sender: UIBarButtonItem) {
-        print("I acting like loging out but rly not!")
+        performSegue(withIdentifier: "UnwindToLogin", sender: self)
     }
 
     func setNavigationBarTitle(title:String){
         navigationBar.title=title
+    }
+    
+    func presentFindLocation()
+    {
+        performSegue(withIdentifier: "SagueToFindLocation", sender: nil)
+    }
+    
+    @IBAction func unwindToTab(segue: UIStoryboardSegue) {
     }
 }
