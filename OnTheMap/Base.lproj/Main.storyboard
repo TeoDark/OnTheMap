@@ -45,14 +45,14 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-tP-Gey">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="753" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="2Zl-tP-Gey">
                                                 <rect key="frame" x="0.0" y="48" width="335" height="39"/>
                                                 <color key="backgroundColor" red="0.94514888740000003" green="0.81573635330000005" blue="0.55622183680000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="1" green="0.36506269043018436" blue="0.031168663271201824" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" textAlignment="center" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-97-ugz">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" minimumFontSize="22" translatesAutoresizingMaskIntoConstraints="NO" id="YPf-97-ugz">
                                                 <rect key="frame" x="0.0" y="97" width="335" height="39"/>
                                                 <color key="backgroundColor" red="0.94514888740000003" green="0.8157363533001708" blue="0.5562218368230416" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="textColor" red="1" green="0.36506269043018436" blue="0.031168663271201824" alpha="1" colorSpace="calibratedRGB"/>

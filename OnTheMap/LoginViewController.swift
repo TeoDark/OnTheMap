@@ -19,7 +19,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //solution from:http://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
+        setLeftMarginForBothTextFields()
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,5 +32,11 @@ class LoginViewController: UIViewController {
         openIfPosibleLinkInBrawser(notSafeURL: "https://www.udacity.com/account/auth#!/signup")
     }
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+    }
+    
+    func setLeftMarginForBothTextFields()
+    {
+        emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+        passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
     }
 }
