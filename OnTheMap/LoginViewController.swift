@@ -39,4 +39,19 @@ class LoginViewController: UIViewController {
         emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
     }
+    
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBAction func test(_ sender: Any) {
+        if errorLabel.isHidden==true{
+            errorLabel.isHidden=false
+            activityIndicator.isHidden=true
+        }
+        else
+        {
+            errorLabel.isHidden=true
+            activityIndicator.isHidden=false
+        }
+    }
 }
