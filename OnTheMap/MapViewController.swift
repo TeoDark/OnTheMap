@@ -31,6 +31,11 @@ class MapViewController: UIViewController {
         tabController?.setNavigationBarTitle(title: "Map")
     }
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func setActivityIndicatorAsHidden(hide:Bool)
+    {
+        activityIndicator?.isHidden=hide
+    }
     
     //function from: https://www.raywenderlich.com/90971/introduction-mapkit-swift-tutorial
     func centerMapOnLocation(location: CLLocation) {

@@ -15,8 +15,15 @@ class TabBarController: UITabBarController {
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
+    var mapView: MapViewController?
+    var tableView: TableViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //finding children
+        mapView=self.childViewControllers.first(where: {$0 is MapViewController}) as? MapViewController
+        tableView=self.childViewControllers.first(where: {$0 is TableViewController}) as? TableViewController
     }
         
     @IBAction func tappingAddPinButton(_ sender: UIBarButtonItem) {
@@ -38,9 +45,12 @@ class TabBarController: UITabBarController {
         }
     }
     
+    var activityIndicatorIsHiden=false
     @IBAction func tappingRefreshButton(_ sender: UIBarButtonItem) {
-        print("I acting like refreshing but rly not!")
-
+        //sending to both controllers becouse I dont know which one is currently displayed - looks like bad practice
+        tableView?.setActivityIndicatorAsHidden(hide: !activityIndicatorIsHiden)
+        mapView?.setActivityIndicatorAsHidden(hide: !activityIndicatorIsHiden)
+        activityIndicatorIsHiden = !activityIndicatorIsHiden
     }
     
     @IBAction func tappingLogoutButton(_ sender: UIBarButtonItem) {

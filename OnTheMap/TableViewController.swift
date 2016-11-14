@@ -48,4 +48,11 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
         openIfPosibleLinkInBrawser(notSafeURL:fakeUrl[indexPath.row])
     }
 
+    /* same as in mapViewController,FindLocation and SetLink - feels like unnecessary duplication of code :/
+    but I didnt want to create new indicator and then destroy it - over and over */
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func setActivityIndicatorAsHidden(hide:Bool)
+    {
+        activityIndicator?.isHidden=hide
+    }
 }

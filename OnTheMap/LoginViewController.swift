@@ -16,11 +16,30 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginWithFBButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     
+    var customTextFieldDelegate1=CustomTextFieldDelegate()
+    var customTextFieldDelegate2=CustomTextFieldDelegate()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //solution from:http://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
         setLeftMarginForBothTextFields()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        customTextFieldDelegate1=CustomTextFieldDelegate()
+        emailTextField.text="Email"
+        emailTextField.delegate=customTextFieldDelegate1
+        
+        resetTextField(field: passwordTextField, defaultText: "Password", delegate: &customTextFieldDelegate2)
+    }
+    
+    func resetTextField(field:UITextField,defaultText:String, delegate:inout CustomTextFieldDelegate)
+    {
+        delegate=CustomTextFieldDelegate()
+        field.text=defaultText
+        field.delegate=delegate
     }
     
     override func didReceiveMemoryWarning() {

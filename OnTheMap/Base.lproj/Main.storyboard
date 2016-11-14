@@ -248,6 +248,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="List" image="ListIcon" id="z57-jX-l0g"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="kwt-1v-kiP" id="iPC-WW-ECv"/>
                         <outlet property="tableView" destination="w4z-XP-5Fq" id="K0c-0E-6Q3"/>
                     </connections>
                 </viewController>
@@ -286,6 +287,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="duN-f1-agI"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="d1F-dt-aMA" id="ann-8V-pGL"/>
                         <outlet property="mapView" destination="z9E-d4-Y4l" id="UkO-WV-bVH"/>
                     </connections>
                 </viewController>
