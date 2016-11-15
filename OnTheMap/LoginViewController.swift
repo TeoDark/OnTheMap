@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginWithFBButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var customTextFieldDelegate1=CustomTextFieldDelegate()
     var customTextFieldDelegate2=CustomTextFieldDelegate()
@@ -23,32 +25,31 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         //solution from:http://stackoverflow.com/questions/25367502/create-space-at-the-beginning-of-a-uitextfield
         setLeftMarginForBothTextFields()
+        emailTextField.delegate=customTextFieldDelegate1
+        passwordTextField.delegate=customTextFieldDelegate2
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        customTextFieldDelegate1=CustomTextFieldDelegate()
-        emailTextField.text="Email"
-        emailTextField.delegate=customTextFieldDelegate1
-        
-        resetTextField(field: passwordTextField, defaultText: "Password", delegate: &customTextFieldDelegate2)
+        //rly concern about quality of code here:
+        resetTextField(field: emailTextField, defaultText: "Email", delegate: customTextFieldDelegate1)
+        resetTextField(field: passwordTextField, defaultText: "Password", delegate: customTextFieldDelegate2)
     }
     
-    func resetTextField(field:UITextField,defaultText:String, delegate:inout CustomTextFieldDelegate)
+    func resetTextField(field:UITextField,defaultText:String, delegate: CustomTextFieldDelegate)
     {
-        delegate=CustomTextFieldDelegate()
         field.text=defaultText
-        field.delegate=delegate
+        delegate.resetToDefaultText(defaultText: defaultText)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     @IBAction func tappingSingUpButton(_ sender: UIButton) {
-        print("Sing Up tapped!")
-        openIfPosibleLinkInBrawser(notSafeURL: "https://www.udacity.com/account/auth#!/signup")
+        
+        errorVisable(isVisable: false)
+        if(!openIfPosibleLinkInBrawser(notSafeURL: "https://www.udacity.com/account/auth#!/signup"))
+        {
+          errorVisable(isVisable: true,text: "Udacity page could not be opened!")
+        }
     }
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
     }
@@ -59,8 +60,11 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
     }
     
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    func errorVisable(isVisable:Bool, text:String = " ")
+    {
+        errorLabel.isEnabled=isVisable
+        errorLabel.text=text
+    }
     
     @IBAction func test(_ sender: Any) {
         if errorLabel.isHidden==true{

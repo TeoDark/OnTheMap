@@ -27,4 +27,9 @@ class CustomTextFieldDelegate: NSObject, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    public func resetToDefaultText(defaultText:String)
+    {
+        textFieldHasDefaultText=true
+    }
 }

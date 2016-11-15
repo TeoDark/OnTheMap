@@ -19,11 +19,11 @@ func openIfPosibleLinkInBrawser(notSafeURL:String)->Bool{
     if let checkURL = URL(string: notSafeURL) {
         UIApplication.shared.open(checkURL as URL, options: [:], completionHandler:nil)
         return true
-    } else {
-        print("Invalid URL")
     }
     return false
 }
+
+
 
 
 
