@@ -11,6 +11,8 @@
 		7C0089B41DCCCDE6000A6D38 /* SetLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C0089B31DCCCDE6000A6D38 /* SetLinkViewController.swift */; };
 		7C10D8CD1DB592BE0086DB9B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C10D8CC1DB592BE0086DB9B /* TableViewController.swift */; };
 		7C10D8CF1DB594450086DB9B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C10D8CE1DB594450086DB9B /* TabBarController.swift */; };
+		7C5CBBB41DDBDD37009138E1 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CBBB31DDBDD37009138E1 /* StudentInformation.swift */; };
+		7C5CBBB61DDBDF17009138E1 /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5CBBB51DDBDF17009138E1 /* DataCenter.swift */; };
 		7C884FE51DD1441200243C94 /* customTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C884FE41DD1441200243C94 /* customTextFieldDelegate.swift */; };
 		7C94096A1DB6D7EF0064A5A3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9409691DB6D7EF0064A5A3 /* Helper.swift */; };
 		7CC651031DB2A54D00A5658E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC651021DB2A54D00A5658E /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 		7C0089B31DCCCDE6000A6D38 /* SetLinkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetLinkViewController.swift; sourceTree = "<group>"; };
 		7C10D8CC1DB592BE0086DB9B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7C10D8CE1DB594450086DB9B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		7C5CBBB31DDBDD37009138E1 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		7C5CBBB51DDBDF17009138E1 /* DataCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		7C884FE41DD1441200243C94 /* customTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTextFieldDelegate.swift; sourceTree = "<group>"; };
 		7C9409691DB6D7EF0064A5A3 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		7CC650FF1DB2A54D00A5658E /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +149,8 @@
 		7CC651301DB2A56200A5658E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7C5CBBB31DDBDD37009138E1 /* StudentInformation.swift */,
+				7C5CBBB51DDBDF17009138E1 /* DataCenter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -309,12 +315,14 @@
 			files = (
 				7CC651341DB2A5F700A5658E /* LoginViewController.swift in Sources */,
 				7C0089B41DCCCDE6000A6D38 /* SetLinkViewController.swift in Sources */,
+				7C5CBBB61DDBDF17009138E1 /* DataCenter.swift in Sources */,
 				7C0089B21DCCC930000A6D38 /* FindLocationViewCintroller.swift in Sources */,
 				7C884FE51DD1441200243C94 /* customTextFieldDelegate.swift in Sources */,
 				7C94096A1DB6D7EF0064A5A3 /* Helper.swift in Sources */,
 				7CC651031DB2A54D00A5658E /* AppDelegate.swift in Sources */,
 				7C10D8CF1DB594450086DB9B /* TabBarController.swift in Sources */,
 				7C10D8CD1DB592BE0086DB9B /* TableViewController.swift in Sources */,
+				7C5CBBB41DDBDD37009138E1 /* StudentInformation.swift in Sources */,
 				7CC651361DB2CB5400A5658E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
