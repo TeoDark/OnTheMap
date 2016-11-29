@@ -27,7 +27,10 @@ class LoginViewController: UIViewController {
         setLeftMarginForBothTextFields()
         emailTextField.delegate=customTextFieldDelegate1
         passwordTextField.delegate=customTextFieldDelegate2
-
+        
+        print("Jakies glupoty")
+        let client = UdacityClient()
+        client.test()
     }
     
     override func viewDidAppear(_ animated: Bool) {
