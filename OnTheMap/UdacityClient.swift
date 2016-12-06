@@ -14,7 +14,7 @@ class UdacityClient: NSObject {
     //var config =
     var sessionID: String? = nil
     
-    func taskForMethod(url:URL, jsonBody: String?, completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func taskForMethod(url:URL, jsonBody: String?, completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) ->Void { //-> URLSessionDataTask {
         
         //example GET and POST taskForMethod had allmoste same code why keep 2 of them?
         
@@ -38,7 +38,7 @@ class UdacityClient: NSObject {
                 print("Pojawil sie blad kurna!")
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerFor(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+                completionHandlerFor(nil, NSError(domain: "taskForGETorPOSTMethod", code: 1, userInfo: userInfo))
             }
             
             /* GUARD: Was there an error? */
@@ -60,19 +60,15 @@ class UdacityClient: NSObject {
             }
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-            //self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerFor)
-            print("what?")
-            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
+            print("converting:")
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerFor)
-            print("what?")
-            //completionHandlerFor(result, error)
             
         }
         
         /* 7. Start the request */
         task.resume()
         
-        return task
+        //return task
     }
 
     
@@ -80,7 +76,6 @@ class UdacityClient: NSObject {
         
         let range = Range(uncheckedBounds: (5, data.count))
         let newData = data.subdata(in: range)
-        print("teraz costam:")
         print(NSString(data: newData, encoding: String.Encoding.utf8.rawValue)!)
         var parsedResult: Any? = nil
         do {
@@ -89,7 +84,6 @@ class UdacityClient: NSObject {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(newData)'"]
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
-        print(parsedResult)
         completionHandlerForConvertData(parsedResult as AnyObject?, nil)
     }
     

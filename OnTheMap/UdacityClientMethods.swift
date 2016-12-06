@@ -10,25 +10,46 @@ import Foundation
 
 extension UdacityClient{
     
-    public func test()
+    public func getSession2(userName:String, password:String, completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
     {
+        let url = URL(string: "https://www.udacity.com/api/session")!
+        let httpBody="{\"udacity\": {\"username\": \"\(userName)\", \"password\": \"\(password)\"}}"
         
-        getSession(userName: TestDummy.getLoginToTest(), password: TestDummy.getPasswordToTest())
-        getMyLocation()
-        /*
-        //print(client.tmdbURLFromParameters([:]))
-        print(self.testURLFromParameters(["method":("costam" as AnyObject)], withPathExtension: "asdf"))
-        print(self.udacityURLFromParameters(["method":("costam" as AnyObject)], withPathExtension: "/session"))
-        let url=self.udacityURLFromParameters(nil, withPathExtension: "/session")
-        print(url)
-        self.taskForMethod(url: url, jsonBody: nil, completionHandlerFor: {_,_ in })
-        */
-        //https://www.udacity.com/api/session
-        //https://udacity.com/apiasdf?method=costam
-        //tmdbURLFromParameters
+        
+        let getSessionClosure:((AnyObject?, NSError?) -> Void) =
+        {(_ result: AnyObject?, _ error: NSError?) -> Void
+            in
+            DispatchQueue.main.async(execute: { () -> Void in
+            print("Teraz rozpoczynam session closure")
+            if(result != nil)
+            {
+                let parsedResult = result as! [String:AnyObject]
+                //DataCenter.sharedInstance.account.key = (parsedResult["account"] as! [String:Int])["key"]!
+                //DataCenter.sharedInstance.account.registered = (parsedResult["account"] as! [String:Int])["registered"]!
+                //DataCenter.sharedInstance.session.expiration = (parsedResult["session"] as! [String:String])["expiration"]!
+                //DataCenter.sharedInstance.session.id = (parsedResult["session"] as! [String:String])["id"]!
+
+                DataCenter.sharedInstance.account.key = (parsedResult["account"] as! [String:Any])["key"]! as! String
+                DataCenter.sharedInstance.account.registered = (parsedResult["account"] as! [String:Any])["registered"]! as? Bool
+                DataCenter.sharedInstance.session.expiration = (parsedResult["session"] as! [String:Any])["expiration"]! as! String
+                DataCenter.sharedInstance.session.id = (parsedResult["session"] as! [String:Any])["id"]! as! String
+
+                print(DataCenter.sharedInstance.account.key)
+                print(DataCenter.sharedInstance.account.registered)
+                print(DataCenter.sharedInstance.session.expiration)
+                print(DataCenter.sharedInstance.session.id)
+            }
+            print("A teraz orgnialnele przekazane mi:")
+            completionHandlerFor(result, error)
+            })
+        }
+        
+        taskForMethod(url: url, jsonBody: httpBody, completionHandlerFor: getSessionClosure)
+    
+    
     }
     
-    public func getSession(userName:String, password:String)
+    public func getSession(userName:String, password:String, completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
     {
         
         let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
@@ -58,10 +79,10 @@ extension UdacityClient{
                 let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(newData)'"]
                 print("huh?")
             }
-            let directored = parsedResult as! NSDictionary
-            let key=(directored["account"] as! NSDictionary)["key"]!
+            //let directored = parsedResult as! NSDictionary
+            //let key=(directored["account"] as! NSDictionary)["key"]!
             
-            self.getMyLocation(key: key)
+            //self.getMyLocation(key: key)
         }
         task.resume()/*
         let newData = "{\"account\": {\"registered\": true, \"key\": \"300606645\"}, \"session\": {\"id\": \"1511044734S5049aa62b11be4f8de926d88439d829a\", \"expiration\": \"2017-01-17T22:38:54.249070Z\"}}"

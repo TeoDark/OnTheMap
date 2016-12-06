@@ -22,8 +22,3 @@ func openIfPosibleLinkInBrawser(notSafeURL:String)->Bool{
     }
     return false
 }
-
-
-
-
-

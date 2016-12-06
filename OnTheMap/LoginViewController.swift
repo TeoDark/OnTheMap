@@ -29,8 +29,6 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate=customTextFieldDelegate2
         
         print("Jakies glupoty")
-        let client = UdacityClient()
-        client.test()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,6 +52,36 @@ class LoginViewController: UIViewController {
           errorVisable(isVisable: true,text: "Udacity page could not be opened!")
         }
     }
+    
+    public func performSegueToMapView()
+    {
+        print("test udal sie!")
+        performSegue(withIdentifier: "toMap", sender: nil)
+    }
+    
+    
+    func actAcordlyToLogInStatus(_: AnyObject? ,error:NSError?)
+    {
+        if(error == nil){
+            performSegueToMapView()
+        }
+        else{
+            errorLabel.text=error!.description
+            errorLabel.isHidden=false
+            loginButton.isEnabled=true
+        }
+        activityIndicator.isHidden=true
+    }
+    
+    @IBAction func tryToLogIn()
+    {
+        loginButton.isEnabled=false
+        activityIndicator.isHidden=false
+        errorLabel.isHidden=true
+        DataCenter.sharedInstance.udacityClient.getSession2(userName: TestDummy.getLoginToTest(), password: TestDummy.getPasswordToTest(),completionHandlerFor: actAcordlyToLogInStatus)
+    }
+    
+    
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
     }
     
