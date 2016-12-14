@@ -10,6 +10,31 @@ import Foundation
 
 extension UdacityClient{
     
+    
+    public func getStudenList(completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
+    {
+        let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?limit=5&order=-updatedAt")!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        let getSessionClosure:((AnyObject?, NSError?) -> Void) =
+            {(_ result: AnyObject?, _ error: NSError?) -> Void
+                in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    print("Teraz rozpoczynam session closure")
+                    if(result != nil)
+                    {
+                        print("Teraz robie tak jakby to dzialalo!")
+                        print("\(result)");
+                    }
+                    print("A teraz orgnialnele przekazane mi:")
+                    completionHandlerFor(result, error)
+                    })
+            }
+        WebClient.sharedInstance.taskForMethod(request: request, completionHandlerFor: getSessionClosure)
+        //taskForMethod(url: url, jsonBody: httpBody, completionHandlerFor: getSessionClosure)
+    }
+    
     public func getSession2(userName:String, password:String, completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
     {
         let url = URL(string: "https://www.udacity.com/api/session")!

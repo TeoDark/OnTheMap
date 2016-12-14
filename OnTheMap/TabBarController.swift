@@ -45,12 +45,12 @@ class TabBarController: UITabBarController {
         }
     }
     
-    var activityIndicatorIsHiden=false
     @IBAction func tappingRefreshButton(_ sender: UIBarButtonItem) {
         //sending to both controllers becouse I dont know which one is currently displayed - looks like bad practice
-        tableView?.setActivityIndicatorAsHidden(hide: !activityIndicatorIsHiden)
-        mapView?.setActivityIndicatorAsHidden(hide: !activityIndicatorIsHiden)
-        activityIndicatorIsHiden = !activityIndicatorIsHiden
+        tableView?.setActivityIndicatorAsHidden(hide: true)
+        mapView?.setActivityIndicatorAsHidden(hide: true)
+        
+        DataCenter.sharedInstance.udacityClient.getStudenList(completionHandlerFor: reactToRecivedStudentList)
     }
     
     @IBAction func tappingLogoutButton(_ sender: UIBarButtonItem) {
@@ -68,4 +68,14 @@ class TabBarController: UITabBarController {
     
     @IBAction func unwindToTab(segue: UIStoryboardSegue) {
     }
+    // MARK Networking part
+    func reactToRecivedStudentList(data: AnyObject? ,error:NSError?)
+    {
+        
+        //need to refresh!
+        
+        tableView?.setActivityIndicatorAsHidden(hide: false)
+        mapView?.setActivityIndicatorAsHidden(hide: false)
+    }
+    
 }
