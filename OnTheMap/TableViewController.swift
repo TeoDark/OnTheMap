@@ -11,10 +11,11 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBOutlet weak var tableView: UITableView!
     var tabController: TabBarController?
-    var fakeUrl:[String]=["https://developer.apple.com/reference/appkit/nsworkspace#relationships",
+    let dataCenter = DataCenter.sharedInstance
+    /* var fakeUrl:[String]=["https://developer.apple.com/reference/appkit/nsworkspace#relationships",
                           "https://discussions.udacity.com/t/problem-with-submit-link/188544",
                           "http://kwejk.pl/obrazek/2792607/czymam-sie.html",
-                          "https://www.bitmarket.pl/market.php?market=BTCPLN"]
+                          "https://www.bitmarket.pl/market.php?market=BTCPLN"] */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,21 +32,27 @@ class TableViewController: UIViewController,UITableViewDataSource,UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return fakeUrl.count
+        return dataCenter.studentsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell=UITableViewCell(style: .default, reuseIdentifier: "StudentList")
+        /* let cell=UITableViewCell(style: .default, reuseIdentifier: "StudentList")
         cell.textLabel?.text=fakeUrl[indexPath.row]
+        cell.imageView?.image=UIImage(imageLiteralResourceName: "PinIcon")
+        return cell */
+        
+        let cell=UITableViewCell(style: .default, reuseIdentifier: "StudentList")
+        //cell.textLabel?.text=fakeUrl[indexPath.row]
+        let student = dataCenter.studentsList[indexPath.row]
+        cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
         cell.imageView?.image=UIImage(imageLiteralResourceName: "PinIcon")
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        print("test")
-        openIfPosibleLinkInBrawser(notSafeURL:fakeUrl[indexPath.row])
+        openIfPosibleLinkInBrawser(notSafeURL:dataCenter.studentsList[indexPath.row].desiredLink)
     }
 
     /* same as in mapViewController,FindLocation and SetLink - feels like unnecessary duplication of code :/

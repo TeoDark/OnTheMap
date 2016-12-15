@@ -21,11 +21,14 @@ extension UdacityClient{
             {(_ result: AnyObject?, _ error: NSError?) -> Void
                 in
                 DispatchQueue.main.async(execute: { () -> Void in
-                    print("Teraz rozpoczynam session closure")
                     if(result != nil)
                     {
-                        print("Teraz robie tak jakby to dzialalo!")
-                        print("\(result)");
+                        print("Teraz robie tak jakby to dzialalo! Próbuje zmienic na slownik a pozniej dodac do data center!")
+                        DataCenter.replaceCurrentStudentList(studentList: result as! [String:Any])
+                    }
+                    else
+                    {
+                        print("Lista studentow była pusa :<")
                     }
                     print("A teraz orgnialnele przekazane mi:")
                     completionHandlerFor(result, error)

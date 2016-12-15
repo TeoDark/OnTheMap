@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 public class DataCenter
 {
@@ -17,7 +18,9 @@ public class DataCenter
     let session = Session()
     let account = Account()
     
-    
+    var mapAnnotations:[MKAnnotation]=[MKAnnotation]()
+    var studentsList:[StudentInformation] = [StudentInformation]()
+        
     // MARK: webOperationInProgress
     private static var webOperationInProgress:Bool=false
     
@@ -58,6 +61,19 @@ public class DataCenter
     {
         var key:String = ""
         var registered:Bool? 
+    }
+    
+    public static func replaceCurrentStudentList(studentList:[String:Any])
+    {
+        if(studentList["results"] != nil){
+            let students = studentList["results"] as! [[String:Any]]
+            for student in students {
+            sharedInstance.studentsList.append(StudentInformation(studentInfoIn: student))
+            }
+        }
+        else{
+            print("Errrora!")
+        }
     }
     
 }

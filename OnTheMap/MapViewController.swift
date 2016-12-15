@@ -12,16 +12,31 @@ class MapViewController: UIViewController,MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     var tabController: TabBarController?
-    var mapAnnotations:[MKAnnotation]=[MKAnnotation]()
+    var mapAnnotations:[MKAnnotation] = [MKAnnotation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    }
+
+    func showStudents()
+    {
+        mapAnnotations.removeAll()
+        for student in DataCenter.sharedInstance.studentsList
+        {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = student.location
+            annotation.title = "\(student.firstName) \(student.lastName)"
+            annotation.subtitle = student.desiredLink
+            mapAnnotations.append(annotation)
+        }
+        mapView.addAnnotations(mapAnnotations)
+    }
+    
+    func test()
+    {
         //let testLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         //centerMapOnLocation(location: testLocation)
         
-        //navigationController?.navigationBar
         for _ in 0...200 {
             let annotation = MKPointAnnotation()
             annotation.coordinate=CLLocationCoordinate2D(latitude: CLLocationDegrees(arc4random_uniform(100)), longitude: CLLocationDegrees(arc4random_uniform(100)))
@@ -36,7 +51,6 @@ class MapViewController: UIViewController,MKMapViewDelegate {
         mapAnnotations.append(annotation)
         
         mapView.addAnnotations(mapAnnotations)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
