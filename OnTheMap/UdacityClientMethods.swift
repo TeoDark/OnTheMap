@@ -10,6 +10,40 @@ import Foundation
 
 extension UdacityClient{
     
+    public func checkIfMyLocationIsPosted(completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
+    {
+        //DataCenter.sharedInstance.account.key = "300606645"
+        let orginalUrl="https://parse.udacity.com/parse/classes/StudentLocation?where={\"uniqueKey\":\"\(DataCenter.sharedInstance.account.key)\"}"
+        let request = NSMutableURLRequest(url: URL(string: orginalUrl.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!)!)
+        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
+        
+        let getSessionClosure:((AnyObject?, NSError?) -> Void) =
+            {(_ result: AnyObject?, _ error: NSError?) -> Void
+                in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    if(result != nil)
+                    {
+                        print("Robie mroczne rzeczy")
+                        let parsedData = (result as! [String:Any])
+                        if(parsedData["results"] != nil){
+                            let hjkl = parsedData["results"] as! [Any]
+                            if(hjkl.isEmpty){
+                                print("No pusto no! wiec daje costam")
+                                DataCenter.sharedInstance.myInfoIsAllreafyPosted = false
+                            }
+                        }
+                    }
+                    else
+                    {
+                        print("Lista studentow była pusa :<")
+                    }
+                    print("A teraz orgnialnele przekazane mi:")
+                    completionHandlerFor(result, error)
+                })
+        }
+        WebClient.sharedInstance.taskForMethod(request: request, completionHandlerFor: getSessionClosure)
+    }
     
     public func getStudenList(completionHandlerFor: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
     {

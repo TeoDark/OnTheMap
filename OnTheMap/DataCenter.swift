@@ -20,7 +20,9 @@ public class DataCenter
     
     var mapAnnotations:[MKAnnotation]=[MKAnnotation]()
     var studentsList:[StudentInformation] = [StudentInformation]()
-        
+    
+    var myInfoIsAllreafyPosted:Bool?
+    
     // MARK: webOperationInProgress
     private static var webOperationInProgress:Bool=false
     
@@ -65,6 +67,7 @@ public class DataCenter
     
     public static func replaceCurrentStudentList(studentList:[String:Any])
     {
+        sharedInstance.studentsList.removeAll()
         if(studentList["results"] != nil){
             let students = studentList["results"] as! [[String:Any]]
             for student in students {

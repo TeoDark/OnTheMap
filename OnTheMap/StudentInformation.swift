@@ -21,7 +21,7 @@ struct StudentInformation {
         if (studentInfoIn["firstName"] != nil && studentInfoIn["lastName"] != nil && studentInfoIn["mediaURL"] != nil ){
             firstName = studentInfoIn["firstName"] as! String
             lastName = studentInfoIn["lastName"] as! String
-            location = CLLocationCoordinate2DMake(CLLocationDegrees(studentInfoIn["longitude"] as! Double), CLLocationDegrees(studentInfoIn["latitude"] as! Double))
+            location = CLLocationCoordinate2DMake(CLLocationDegrees(studentInfoIn["latitude"] as! Double), CLLocationDegrees(studentInfoIn["longitude"] as! Double))
             desiredLink = studentInfoIn["mediaURL"] as! String
         }
         else

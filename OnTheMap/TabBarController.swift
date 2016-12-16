@@ -27,28 +27,53 @@ class TabBarController: UITabBarController {
     }
         
     @IBAction func tappingAddPinButton(_ sender: UIBarButtonItem) {
-        print("Dzialam!")
-        //solution from: http://nshipster.com/uialertcontroller/
-        let alertController = UIAlertController(title: nil, message: "You Have Already Posted a Student Location. Would You Like to Overwrite Your Current Location?", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let overwriteAction = UIAlertAction(title: "Overwrite!", style: .destructive)
+
+        if(DataCenter.sharedInstance.myInfoIsAllreafyPosted == nil)
         {
-            (action) in
-            self.presentFindLocation()
+            print("Sprawdzam czy czasem informacje nie sa umieszczone")
+            tableView?.setActivityIndicatorAsHidden(hide: false)
+            mapView?.setActivityIndicatorAsHidden(hide: false)
+            DataCenter.sharedInstance.udacityClient.checkIfMyLocationIsPosted(completionHandlerFor: checkIfMyLocationIsAllreadyPosted)
+        }
+        else
+        {
+            print("Nie ma co sprawdzac!")
+            displayAleftBeforePresentFindLocationIfNeeded()
         }
 
-        alertController.addAction(overwriteAction)
-        alertController.addAction(cancelAction)
+    }
+    
+    func displayAleftBeforePresentFindLocationIfNeeded()
+    {
+        if(DataCenter.sharedInstance.myInfoIsAllreafyPosted == true)
+        {
+            //solution from: http://nshipster.com/uialertcontroller/
+            let alertController = UIAlertController(title: nil, message: "You Have Already Posted a Student Location. Would You Like to Overwrite Your Current Location?", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let overwriteAction = UIAlertAction(title: "Overwrite!", style: .destructive)
+            {
+                (action) in
+                self.presentFindLocation()
+            }
         
-        self.present(alertController, animated: true) {
+            alertController.addAction(overwriteAction)
+            alertController.addAction(cancelAction)
+        
+            self.present(alertController, animated: true)
+            {
             // ...
+            }
+        }
+        else
+        {
+            self.presentFindLocation()
         }
     }
     
     @IBAction func tappingRefreshButton(_ sender: UIBarButtonItem) {
         //sending to both controllers becouse I dont know which one is currently displayed - looks like bad practice
-        tableView?.setActivityIndicatorAsHidden(hide: true)
-        mapView?.setActivityIndicatorAsHidden(hide: true)
+        tableView?.setActivityIndicatorAsHidden(hide: false)
+        mapView?.setActivityIndicatorAsHidden(hide: false)
         
         DataCenter.sharedInstance.udacityClient.getStudenList(completionHandlerFor: reactToRecivedStudentList)
     }
@@ -71,11 +96,21 @@ class TabBarController: UITabBarController {
     // MARK Networking part
     func reactToRecivedStudentList(data: AnyObject? ,error:NSError?)
     {
-        
+
+        tableView?.tableView.reloadData()
+        mapView?.showStudents()
         //need to refresh!
+    
+        tableView?.setActivityIndicatorAsHidden(hide: true)
+        mapView?.setActivityIndicatorAsHidden(hide: true)
+    }
+    
+    func checkIfMyLocationIsAllreadyPosted(data: AnyObject? ,error:NSError?)
+    {
+        displayAleftBeforePresentFindLocationIfNeeded()
         
-        tableView?.setActivityIndicatorAsHidden(hide: false)
-        mapView?.setActivityIndicatorAsHidden(hide: false)
+        tableView?.setActivityIndicatorAsHidden(hide: true)
+        mapView?.setActivityIndicatorAsHidden(hide: true)
     }
     
 }
